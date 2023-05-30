@@ -1,5 +1,28 @@
 extends layout
 
 block content
+  nav.navbar
+    div.logo
+      a(href="/") My Shop
+    ul.nav-links
+      li
+        a(href="/catalog/items") Products
+      li
+        a(href="/catalog/categories") Categories
+      li
+        a(href="/catalog/cart") Cart  
+        span#cartCount #{count}
+      li
+        a(href="/login") Login
+
   h1= title
   p Welcome to #{title}
+
+  h1 Dynamic content 
+
+  p This store has the following item and category counts: 
+  ul 
+    li
+      a(href="/catalog/items") #[strong Items:] !{item_count}
+    li 
+      strong Categories: !{category_count}
