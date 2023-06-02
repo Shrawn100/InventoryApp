@@ -18,7 +18,7 @@ exports.cart_add = asyncHandler(async (req, res, next) => {
   req.session.cart = cart;
   req.session.cartCount = (req.session.cartCount || 0) + qty;
 
-  res.redirect(`/catalog/item/${req.params.id}`);
+  res.redirect(`/catalog/items`);
 });
 exports.cart_increase = asyncHandler(async (req, res, next) => {
   const productId = req.params.id;
