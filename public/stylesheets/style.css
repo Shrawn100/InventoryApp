@@ -1,5 +1,5 @@
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body,
+* {
   margin: 0;
 }
 
@@ -215,8 +215,10 @@ select {
   display: flex;
   justify-content: space-around;
   color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   text-align: center;
+  z-index: 1;
+  position: relative;
 }
 
 .logo a {
@@ -249,6 +251,8 @@ select {
 .nav-links li a:hover {
   text-decoration: underline;
 }
+
+/* Cart */
 
 .cart-items {
   display: flex;
@@ -339,4 +343,388 @@ select {
 }
 .btn-checkout:hover {
   background-color: rgb(38, 143, 38);
+}
+
+/* Home */
+
+/*1st slide */
+.background-container {
+  z-index: 0;
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.one-liner {
+  font-size: 170px;
+  font-weight: bold;
+
+  color: rgb(255, 255, 255);
+  font-family: "Bebas Neue";
+  margin-top: 100px;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.second-line {
+  margin-left: 100px;
+  width: 100%;
+}
+.third-line {
+  margin-left: 200px;
+  width: 100%;
+}
+
+.background-container > a {
+  margin-top: 20px;
+  font-size: 30px;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.5);
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: "Bebas Neue";
+}
+.background-container > a:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1350px) {
+  .one-liner {
+    font-size: 150px;
+  }
+}
+@media (max-width: 1200px) {
+  .background-container {
+    height: 85vh;
+  }
+  .one-liner {
+    font-size: 120px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .one-liner {
+    font-size: 100px;
+  }
+  .background-container {
+    height: 80vh;
+  }
+}
+@media (max-width: 850px) {
+  .second-line {
+    margin-left: 50px;
+  }
+  .third-line {
+    margin-left: 100px;
+  }
+}
+@media (max-width: 760px) {
+  .background-container {
+    height: 60vh;
+  }
+  .one-liner {
+    margin-top: 100px;
+    font-size: 60px;
+    text-align: center;
+  }
+  .second-line {
+    margin-left: 0;
+  }
+  .third-line {
+    margin-left: 0;
+  }
+}
+@media (max-width: 340px) {
+  .one-liner {
+    margin-top: 20px;
+  }
+}
+
+/* 2nd slide */
+
+.second-slide-container {
+  display: flex;
+  justify-content: center;
+  padding: 100px;
+}
+.couple {
+  background-image: url("../images/couple.jpg");
+}
+.yellow {
+  background-image: url("../images/yellowman.jpg");
+}
+.three {
+  background-image: url("../images/three.jpeg");
+}
+.single {
+  background-image: url("../images/single.jpeg");
+}
+.couple,
+.yellow,
+.three,
+.single {
+  background-position: center;
+  background-size: cover;
+  height: 600px;
+  width: 400px;
+}
+
+@media (max-width: 1400px) {
+  .second-slide-container {
+    padding: 50px;
+  }
+}
+@media (max-width: 1200px) {
+  .second-slide-container {
+    padding: 40px;
+  }
+  .couple,
+  .yellow,
+  .three,
+  .single {
+    height: 500px;
+    width: 400px;
+  }
+}
+@media (max-width: 850px) {
+  .second-slide-container {
+    padding: 20px;
+  }
+  .couple,
+  .yellow,
+  .three,
+  .single {
+    height: 400px;
+    width: 300px;
+  }
+}
+@media (max-width: 60px) {
+  .second-slide-container {
+    padding: 10px;
+  }
+  .couple,
+  .yellow,
+  .three,
+  .single {
+    height: 400px;
+    width: 250px;
+  }
+}
+
+/* 3rd slide */
+
+.third-slide-container {
+  display: flex;
+}
+.quote {
+  text-align: center;
+  font-weight: bold;
+  font-family: "Lobster";
+  font-size: 30px;
+  padding: 50px 100px 50px 100px;
+}
+
+@media (max-width: 1200px) {
+  .quote {
+    padding: 50px;
+  }
+}
+@media (max-width: 800px) {
+  .quote {
+    padding: 20px;
+  }
+}
+
+/* 4th slide */
+
+.fourth-slide-container {
+  margin-top: 30px;
+  overflow: hidden;
+  padding: 10px 0px 10px 0px;
+}
+.fourth-slide-container-title {
+  padding: 20px;
+  text-align: center;
+  font-family: "Anton";
+}
+.brands-wheel {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 50px 0px 50px 0px;
+  justify-content: center;
+  animation: 7s roll infinite linear;
+}
+
+@keyframes roll {
+  0% {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(120%);
+  }
+}
+
+@media (max-width: 1550px) {
+  .brands-wheel {
+    animation: 7s roll-1 infinite linear;
+  }
+  @keyframes roll-1 {
+    0% {
+      transform: translateX(-140%);
+    }
+    to {
+      transform: translateX(140%);
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .brands-wheel {
+    animation: 7s roll-2 infinite linear;
+  }
+  @keyframes roll-2 {
+    0% {
+      transform: translateX(-170%);
+    }
+    to {
+      transform: translateX(170%);
+    }
+  }
+}
+@media (max-width: 950px) {
+  .brands-wheel {
+    animation: 7s roll-3 infinite linear;
+  }
+  @keyframes roll-3 {
+    0% {
+      transform: translateX(-200%);
+    }
+    to {
+      transform: translateX(200%);
+    }
+  }
+  .nike,
+  .addidas,
+  .offwhite,
+  .supreme,
+  .carhartt,
+  .fearofgod,
+  .rebook,
+  .tnf,
+  .vans,
+  .palace {
+    box-sizing: border-box;
+    min-width: 150px;
+    height: 100px;
+  }
+}
+.nike,
+.addidas,
+.offwhite,
+.supreme,
+.carhartt,
+.fearofgod,
+.rebook,
+.tnf,
+.vans,
+.palace {
+  box-sizing: border-box;
+  min-width: 200px;
+  height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 2px solid black;
+}
+.nike {
+  background-image: url("../images/nike.png");
+}
+.addidas {
+  background-image: url("../images/addidas.jpg");
+}
+.offwhite {
+  background-image: url("../images/offwhite.png");
+}
+.supreme {
+  background-image: url("../images/bape.jpg");
+}
+.carhartt {
+  background-image: url("../images/carhartt.png");
+}
+.fearofgod {
+  background-image: url("../images/fearofgod.jpg");
+}
+.rebook {
+  background-image: url("../images/rebook.png");
+}
+.tnf {
+  background-image: url("../images/tnf.png");
+}
+.vans {
+  background-image: url("../images/vans.png");
+}
+.palace {
+  background-image: url("../images/palace.jpg");
+}
+
+/*fifth slide */
+
+.fifth-slide-container {
+  margin-top: 50px;
+  height: 150px;
+  width: 100%;
+  background-color: rgb(73, 73, 73);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.5);
+}
+.visa,
+.mastercard,
+.paypal,
+.googlepay,
+.applepay {
+  box-sizing: border-box;
+  min-width: 70px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.visa {
+  background-image: url(../images/visa.jpg);
+}
+.mastercard {
+  background-image: url(../images/mastercard.png);
+}
+.paypal {
+  background-image: url(../images/paypal.png);
+}
+.googlepay {
+  background-image: url(../images/Google_Pay_Logo.svg.png);
+}
+.applepay {
+  background-image: url(../images/apple.webp);
+}
+
+/* 6th slide */
+.sixth-slide-container {
+  height: 200px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-family: "Anton";
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

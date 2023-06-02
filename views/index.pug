@@ -3,7 +3,7 @@ extends layout
 block content
   nav.navbar
     div.logo
-      a(href="/") My Shop
+      a(href="/") Vintage
     ul.nav-links
       li
         a(href="/catalog/items") Products
@@ -14,14 +14,41 @@ block content
       li
         a(href="/login") Login
 
-  h1= title
-  p Welcome to #{title}
-
-  h1 Dynamic content 
-
-  p This store has the following item and category counts: 
-  ul 
-    li
-      a(href="/catalog/items") #[strong Items:] !{item_count}
-    li 
-      strong Categories: !{category_count}
+  .background-container
+    .one-liner
+      p.first-line Style unleashed:
+      p.second-line Discover the Essence
+      p.third-line Of Urban Fashion.
+      
+    a(href="/catalog/items") SHOP NOW
+  .second-slide-container
+    .yellow
+    .couple
+    .three
+    .single
+  .third-slide-container 
+    .quote 
+      |"Step into the realm of urban fashion at Vintage, where style and attitude converge. Discover curated collections that elevate your streetwear game."
+      br
+      |- A wise man.
+  .fourth-slide-container
+    .fourth-slide-container-title Shop From The World's Leading Brands
+    .brands-wheel 
+      .nike 
+      .addidas 
+      .offwhite 
+      .supreme 
+      .carhartt
+      .fearofgod
+      .rebook 
+      .tnf 
+      .vans 
+      .palace
+  .fifth-slide-container 
+    .visa 
+    .mastercard 
+    .paypal 
+    .googlepay 
+    .applepay 
+  .sixth-slide-container 
+    |Created by Shrawn Chhetri
