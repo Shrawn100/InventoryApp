@@ -7,8 +7,7 @@ block content
     ul.nav-links
       li
         a(href="/catalog/items") Products
-      li
-        a(href="/catalog/categories") Categories
+      
       li
         a(href="/catalog/cart") Cart 
         span#cartCount #{count}
@@ -19,20 +18,22 @@ block content
     .cart-items
       each product in products
         .cart-item
-          img.product-image(src= product.item.image, alt=product.item.title)
+          img.product-image(src= product.item.image, alt=product.item.title referrerpolicy="no-referrer")
           .cart-item-info 
             strong.product-title= product.item.title
             strong.product-price $#{product.item.price}
-            .product-actions
-              a.btn.btn-reduce(href=`cart/reduce/${product.item._id}`) Reduce by 1
-              a.btn.btn-remove(href=`cart/remove/${product.item._id}`) Remove All
-            span.product-quantity Quantity: #{product.qty}
+            div Qty:
+            div.product-quantity
+              a.btn.btn-reduce(href=`cart/reduce/${product.item._id}`) -
+              .product-quantity-value #{product.qty}
+              a.btn.btn-add(href=`cart/add/${product.item._id}`) +
+            a.btn.btn-remove(href=`cart/remove/${product.item._id}`) Remove
+            
           
     .cart-total
-      strong Total: #{totalPrice}
-    .cart-buttons
+      strong Total:  $#{totalPrice}
       a.btn.btn-checkout(href='/checkout') Checkout
   else
     .empty-cart
-      img(src='/icons/empty-cart.svg', alt='Empty cart')
+      
       h2 Oops, your cart is empty

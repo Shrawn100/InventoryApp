@@ -1,7 +1,7 @@
 const Item = require("../models/item");
 const Category = require("../models/category");
 const asyncHandler = require("express-async-handler");
-
+const mongoose = require("mongoose");
 exports.index = asyncHandler(async (req, res, next) => {
   const [numItems, numCategories] = await Promise.all([
     Item.countDocuments({}).exec(),
@@ -19,7 +19,7 @@ exports.index = asyncHandler(async (req, res, next) => {
 exports.item_list = asyncHandler(async (req, res, next) => {
   const allItems = await Item.find().populate("category").exec();
   const count = req.session.cartCount || 0;
-  res.render("item_list", { title: "Item List:", item_list: allItems, count });
+  res.render("item_list", { title: "Item List", item_list: allItems, count });
 });
 
 // Display detail page for a specific item.
@@ -38,9 +38,8 @@ exports.item_detail = asyncHandler(async (req, res, next) => {
     count,
   });
 });
-
 exports.filter = asyncHandler(async (req, res, next) => {
-  const { category, minPrice, maxPrice, sort } = req.query;
+  const { category, minPrice, maxPrice, sort, term } = req.query;
   let filter = {};
 
   if (category && category !== "") {
@@ -70,7 +69,68 @@ exports.filter = asyncHandler(async (req, res, next) => {
     sortOption.price = -1;
   }
 
-  const filteredItems = await Item.find(filter).sort(sortOption);
+  let filteredItems;
+
+  if (term) {
+    const pipeline = [
+      {
+        $search: {
+          index: "Searching",
+          autocomplete: {
+            query: term,
+            path: "title",
+            fuzzy: {
+              maxEdits: 1,
+            },
+          },
+        },
+      },
+    ];
+    filteredItems = await Item.aggregate(pipeline);
+
+    if (Object.keys(filter).length !== 0) {
+      filteredItems = filteredItems.filter((item) => {
+        return (
+          (!category ||
+            item.category.toString() === filter.category.toString()) &&
+          (!minPrice || item.price >= minPrice) &&
+          (!maxPrice || item.price <= maxPrice)
+        );
+      });
+    }
+
+    // Populate the 'category' field for each filtered item
+    await Item.populate(filteredItems, { path: "category" });
+
+    // Create a plain JavaScript object for each filtered item with the 'url' property
+    filteredItems = filteredItems.map((item) => {
+      return {
+        title: item.title,
+        price: item.price,
+        category: item.category,
+        image: item.image,
+        size: item.size,
+        url: `/catalog/item/${item._id}`,
+      };
+    });
+  } else {
+    filteredItems = await Item.find(filter)
+      .sort(sortOption)
+      .populate("category")
+      .exec();
+
+    // Create a plain JavaScript object for each filtered item with the 'url' property
+    filteredItems = filteredItems.map((item) => {
+      return {
+        title: item.title,
+        price: item.price,
+        category: item.category,
+        image: item.image,
+        size: item.size,
+        url: `/catalog/item/${item._id}`,
+      };
+    });
+  }
 
   const count = req.session.cartCount || 0;
   res.render("item_list", {
@@ -81,6 +141,7 @@ exports.filter = asyncHandler(async (req, res, next) => {
     minPrice, // Pass the minimum price value
     maxPrice, // Pass the maximum price value
     sort, // Pass the selected sort option
+    term, // Pass the search term
   });
 
   // Use the filteredItems as needed (e.g., send it as a response to the user)

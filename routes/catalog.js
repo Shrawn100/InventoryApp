@@ -30,6 +30,7 @@ router.get("/item/:id", item_controller.item_detail);
 
 //POST request to add item to cart
 router.post("/item/:id", cart_controller.cart_add);
+router.get("/cart/add/:id", cart_controller.cart_increase);
 // GET request for list of all item items.
 router.get("/items", item_controller.item_list);
 
@@ -65,4 +66,5 @@ router.get("/cart", cart_controller.cart_get);
 router.get("/cart/reduce/:id", cart_controller.cart_reduce);
 router.get("/cart/remove/:id", cart_controller.cart_remove);
 router.get("/items/filter", item_controller.filter);
+
 module.exports = router;

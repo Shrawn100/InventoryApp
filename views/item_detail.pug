@@ -6,8 +6,7 @@ block content
     ul.nav-links
       li
         a(href="/catalog/items") Products
-      li
-        a(href="/catalog/categories") Categories
+      
       li
         a(href="/catalog/cart") Cart  
         span#cartCount #{count}
@@ -15,11 +14,11 @@ block content
         a(href="/login") Login
 
   .item-detail-container
-    img.item-picture(src=item.image alt=item.title)
+    img.item-picture(src=item.image alt=item.title referrerpolicy="no-referrer")
     .item-info-container
       h1 #{title}
-      | Price: $#{item.price}
-      form(action="", method="POST")
+      h2 Price: $#{item.price}
+      form.qty-form(action="", method="POST")
         input(type="hidden" name="productId" value=item._id)
         label(for="quantity") Quantity:
         input#quantity(type="number" name="quantity" min="1" value="1")

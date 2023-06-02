@@ -6,42 +6,48 @@ block content
     ul.nav-links
       li
         a(href="/catalog/items") Products
-      li
-        a(href="/catalog/categories") Categories
+      
       li
         a(href="/catalog/cart") Cart  
         span#cartCount #{count}
       li
         a(href="/login") Login
-  h1= title
+  h1.item-list-title= title
 
   .container 
     .filter
       form(action="/catalog/items/filter", method="GET")
-        label(for="category") Category:
-        select(id="category" name="category" onchange="this.form.submit()")
-          option(value="" selected=(category === undefined || category === '')) All
-          option(value="Shoes" selected=(category === 'Shoes')) Shoes
-          option(value="Hoodies" selected=(category === 'Hoodies')) Hoodies
-          option(value="Shirts" selected=(category === 'Shirts')) Shirts
-        label(for="minPrice") Minimum Price:
-        input(type="number" id="minPrice" name="minPrice" value=minPrice onchange="this.form.submit()")
-        label(for="maxPrice") Maximum Price:
-        input(type="number" id="maxPrice" name="maxPrice" value=maxPrice onchange="this.form.submit()")
-        label(for="sort") Sort By:
-        select(id="sort" name="sort" onchange="this.form.submit()")
-          option(value="" selected=(sort === undefined || sort === '')) None
-          option(value="lowToHigh" selected=(sort === 'lowToHigh')) Price: Low to High
-          option(value="highToLow" selected=(sort === 'highToLow')) Price: High to Low
+        .input-group 
+          label(for="search") Search:
+          input(id="search" type="text" value=term name="term" placeholder="Enter search term" onchange="this.form.submit()")
+          
+          label(for="category") Category:
+          select(id="category" name="category" onchange="this.form.submit()")
+            option(value="" selected=(category === undefined || category === '')) All
+            option(value="Shoes" selected=(category === 'Shoes')) Shoes
+            option(value="Hoodies" selected=(category === 'Hoodies')) Hoodies
+            option(value="Shirts" selected=(category === 'Shirts')) Shirts
+        .input-group   
+          label(for="minPrice") Minimum Price:
+          input(type="number" id="minPrice" name="minPrice" value=minPrice onchange="this.form.submit()" placeholder="$0")
+          
+          label(for="maxPrice") Maximum Price:
+          input(type="number" id="maxPrice" name="maxPrice" value=maxPrice onchange="this.form.submit()" placeholder="$200")
+        .input-group 
+          label(for="sort") Sort By:
+          select(id="sort" name="sort" onchange="this.form.submit()")
+            option(value="" selected=(sort === undefined || sort === '')) None
+            option(value="lowToHigh" selected=(sort === 'lowToHigh')) Price: Low to High
+            option(value="highToLow" selected=(sort === 'highToLow')) Price: High to Low
 
     div.item-container
       each item in item_list
         div(onclick=`window.location.href='${item.url}'`)
-          img.item-image(src=item.image alt=item.title )
-          div
+          img.item-image(src=item.image alt=item.title referrerpolicy="no-referrer")
+          .item-info 
             a(href=item.url) #{item.title}
-            div Price:$#{item.price}
-            div Category: #{item.category.name}
+            div $#{item.price}
+            
 
       else
         li There are no items.
