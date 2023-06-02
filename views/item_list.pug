@@ -1,17 +1,23 @@
 extends layout
 block content
   nav.navbar
-    div.logo
-      a(href="/") My Shop
     ul.nav-links
       li
         a(href="/catalog/items") Products
-      
       li
-        a(href="/catalog/cart") Cart  
-        span#cartCount #{count}
-      li
-        a(href="/login") Login
+        a(href="/catalog/cart")
+          span.material-icons
+            | shopping_cart
+          | #{count}
+    div.logo
+      a(href="/") Vintage
+    div.login
+      a(href="/login")
+       span.material-icons
+            | account_circle
+          
+        
+
   h1.item-list-title= title
 
   .container 

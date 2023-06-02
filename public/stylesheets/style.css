@@ -16,12 +16,13 @@ a {
   width: 100%;
   gap: 15px;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  padding-bottom: 50px;
 }
 .item-container > div {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+  font-family: "Abel";
   font-size: 20px;
   text-align: center;
   max-width: 300px;
@@ -48,11 +49,13 @@ a {
   padding: 20px;
   font-size: 23px;
   text-align: center;
+  font-family: "Abel";
 }
 
 label {
   font-size: 17px;
   font-weight: bold;
+  font-family: "Abel";
 }
 
 input,
@@ -62,6 +65,7 @@ select {
   font-size: 18px;
   border: 1px solid rgb(197, 197, 197);
   background-color: white;
+  font-family: "Abel";
 }
 
 @media (max-width: 1000px) {
@@ -211,9 +215,10 @@ select {
 /* styles.css */
 .navbar {
   background-color: #030303;
-  padding: 25px;
+  padding: 25px 25px 25px 0px;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   text-align: center;
@@ -223,10 +228,24 @@ select {
 
 .logo a {
   color: #ffffff;
-  font-size: 25px;
+  font-size: 30px;
+
   font-weight: bold;
   text-decoration: none;
   text-align: center;
+  margin-right: 55px;
+}
+.logo a:hover {
+  text-decoration: underline;
+}
+.login > a > span {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 30px;
+}
+.login > a > span:hover {
+  text-decoration: underline;
 }
 
 .nav-links {
@@ -237,15 +256,15 @@ select {
   padding: 0;
   font-weight: 700;
   text-align: center;
-}
-
-.nav-links li {
-  margin-left: 10px;
+  gap: 10px;
 }
 
 .nav-links li a {
   color: #ffffff;
   text-decoration: none;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
 }
 
 .nav-links li a:hover {
