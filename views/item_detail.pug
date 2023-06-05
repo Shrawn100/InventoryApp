@@ -21,9 +21,9 @@ block content
     img.item-picture(src=item.image alt=item.title referrerpolicy="no-referrer")
     .item-info-container
       h1 #{title}
-      h2 Price: $#{item.price}
+      h2 $#{item.price}
       form.qty-form(action="", method="POST")
         input(type="hidden" name="productId" value=item._id)
         label(for="quantity") Quantity:
         input#quantity(type="number" name="quantity" min="1" value="1")
-        button(type="submit") Add to Cart
+        button.add-to-cart-btn(type="submit") Add to Cart

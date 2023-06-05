@@ -12,14 +12,14 @@ const uniqid = require("uniqid");
 const session = require("express-session");
 var app = express();
 
+require("dotenv").config();
+
 //Set up mongoose connection
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const dev_db_url =
-  "mongodb+srv://shrawn2003:pradhans1@cluster0.e87mgi0.mongodb.net/inventory?retryWrites=true&w=majority";
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 main().catch((err) => console.log(err));
 async function main() {

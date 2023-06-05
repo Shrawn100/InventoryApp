@@ -24,7 +24,7 @@ async function main() {
   console.log("Debug: About to connect");
   await mongoose.connect(mongoDB);
   console.log("Debug: Should be connected?");
-  await createCategory();
+
   await createItems();
 
   console.log("Debug: Closing mongoose");
@@ -69,8 +69,26 @@ async function createItems() {
   console.log("Adding items");
   console.log(categories);
   await Promise.all([
-    itemCreate("Shoe", 100, categories[0], "medium"),
-    itemCreate("Shirt", 50, categories[1], "large"),
-    itemCreate("Hoodies", 70, categories[2], "small"),
+    itemCreate(
+      "Air Jordan 1 Retro Low OG",
+      600,
+      categories[0],
+      "medium",
+      "https://kickstw.com.au/wp-content/uploads/2022/11/Air-Jordan-1-Retro-Low-OG-Zion-Williamson-Voodoo-1.jpg"
+    ),
+    itemCreate(
+      "Chrome Hearts Cemetery",
+      799,
+      categories[1],
+      "small",
+      "https://kickstw.com.au/wp-content/uploads/2023/05/Chrome-Hearts-Cemetery-Tee-BlackYellowGreen-1.jpg"
+    ),
+    itemCreate(
+      "Revenge Bejeweled Arc",
+      300,
+      categories[2],
+      "small",
+      "https://kickstw.com.au/wp-content/uploads/2023/05/Revenge-Bejeweled-Arc-Logo-Hoodie-Black-1.jpg"
+    ),
   ]);
 }
