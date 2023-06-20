@@ -165,3 +165,33 @@ exports.filter = asyncHandler(async (req, res, next) => {
 
   // Use the filteredItems as needed (e.g., send it as a response to the user)
 });
+
+// Display item create form on GET.
+exports.item_create_get = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: item create GET");
+});
+
+// Handle item create on POST.
+exports.item_create_post = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: item create POST");
+});
+
+// Display item delete form on GET.
+exports.item_delete_get = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: item delete GET");
+});
+
+// Handle item delete on POST.
+exports.item_delete_post = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: item delete POST");
+});
+
+// Display item update form on GET.
+exports.item_update_get = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: item update GET");
+});
+
+// Handle item update on POST.
+exports.item_update_post = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: item update POST");
+});
