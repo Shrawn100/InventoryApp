@@ -1,0 +1,27 @@
+extends layout
+block content
+  nav.navbar
+    div.logo
+      a(href="/") Vintage
+    ul.nav-links
+      li
+        a.products-link(href="/catalog/items") Products
+      li
+        a(href="/catalog/cart")
+          span.material-icons.shopping-cart
+            | shopping_cart
+          if(count!==0)
+            div.cart-count #{count}
+          
+
+  .item-detail-container
+    .item-image-container
+      img.item-picture(src=item.image alt=item.title referrerpolicy="no-referrer")
+    .item-info-container
+      h1 #{title}
+      h2 $#{item.price}
+      form.qty-form(action="", method="POST")
+        input(type="hidden" name="productId" value=item._id)
+        label(for="quantity") Quantity:
+        input#quantity(type="number" name="quantity" min="1" value="1")
+        button.add-to-cart-btn(type="submit") Add to Cart

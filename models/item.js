@@ -6,6 +6,8 @@ const ItemSchema = new Schema({
   price: { type: Number, required: true },
   category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
   image: { type: String },
+  imagetwo: { type: String },
+  imagethree: { type: String },
   size: {
     type: String,
     required: true,

@@ -38,6 +38,22 @@ exports.item_detail = asyncHandler(async (req, res, next) => {
     count,
   });
 });
+exports.item_detail_two = asyncHandler(async (req, res, next) => {
+  const item = await Item.findById(req.params.id).populate("category").exec();
+  if (item === null) {
+    // No results.
+    const err = new Error("Book not found");
+    err.status = 404;
+    return next(err);
+  }
+  const count = req.session.cartCount || 0;
+  res.render("item_detail_two", {
+    title: item.title,
+    item: item,
+    count,
+  });
+});
+
 exports.filter = asyncHandler(async (req, res, next) => {
   const { category, minPrice, maxPrice, sort, term } = req.query;
   let filter = {};

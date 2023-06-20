@@ -50,14 +50,24 @@ async function createCategory() {
 }
 //Create Item
 
-async function itemCreate(title, price, category, size, image) {
+async function itemCreate(
+  title,
+  price,
+  category,
+  size,
+  image,
+  imagetwo,
+  imagethree
+) {
   const itemdetail = {
     title: title,
     price: price,
     category,
     size,
+    image,
+    imagetwo,
   };
-  if (image != false) itemdetail.image = image;
+  if (imagethree != false) itemdetail.imagethree = imagethree;
 
   const item = new Item(itemdetail);
   await item.save();

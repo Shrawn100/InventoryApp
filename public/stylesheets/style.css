@@ -27,14 +27,15 @@ a {
   text-align: center;
   max-width: 300px;
   cursor: pointer;
+  min-height: 400px;
 }
 .item-container > div:hover {
-  border: 1px solid rgb(58, 58, 58);
+  transform: scale(0.99);
 }
 
 .item-image {
-  max-width: 300px;
-  height: 400px;
+  margin: auto;
+  width: 100%;
 }
 .filter > form {
   padding: 50px;
@@ -125,6 +126,8 @@ select {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  padding-bottom: 30px;
+  margin-top: 25px;
 }
 .item-info-container {
   font-family: "Abel";
@@ -141,10 +144,35 @@ select {
   color: black;
   text-decoration: none;
 }
-.item-picture {
-  width: 600px;
-  margin-top: 50px;
+.item-image-container {
+  display: flex;
+
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 600px;
+  min-height: 800px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
 }
+
+.item-picture {
+  margin: auto;
+  width: 100%;
+}
+.item-other-imgs {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  gap: 5px;
+}
+.item-list-img {
+  width: 120px;
+}
+.item-list-img:hover {
+  transform: scale(0.98);
+  cursor: pointer;
+}
+
 .qty-form {
   display: flex;
   flex-direction: column;
@@ -219,9 +247,9 @@ select {
 }
 
 /* navbar */
-/* styles.css */
+
 .navbar {
-  background-color: #030303;
+  background: linear-gradient(rgb(110, 110, 110), rgb(31, 31, 31));
   padding: 25px 25px 25px 0px;
   display: flex;
   justify-content: space-around;
@@ -235,8 +263,8 @@ select {
 
 .logo a {
   color: #ffffff;
-  font-size: 30px;
-
+  font-size: 35px;
+  font-family: "Abel";
   font-weight: bold;
   text-decoration: none;
   text-align: center;
@@ -266,16 +294,34 @@ select {
   gap: 10px;
 }
 
-.nav-links li a {
+.nav-links > li > a {
   color: #ffffff;
   text-decoration: none;
   font-size: 25px;
   display: flex;
+  gap: 10px;
   align-items: center;
+  font-family: "Abel";
+}
+.products-link:hover {
+  text-decoration: underline;
 }
 
-.nav-links li a:hover {
+.shopping-cart {
+  height: 30px;
+  padding-top: 3px;
+}
+.shopping-cart:hover {
   text-decoration: underline;
+}
+.cart-count {
+  border-radius: 100%;
+  background-color: red;
+  color: white;
+  width: 25px;
+  padding: 2px;
+  height: 25px;
+  font-size: 20px;
 }
 
 /* Cart */
@@ -482,26 +528,30 @@ select {
 /* 2nd slide */
 
 .second-slide-container {
-  display: flex;
-  justify-content: center;
   padding: 100px;
 }
-.couple {
+.second-slide-img-container {
+  display: flex;
+  max-width: 1600px;
+  justify-content: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+.img-one {
   background-image: url("../images/couple.jpg");
 }
-.yellow {
+.img-two {
   background-image: url("../images/yellowman.jpg");
 }
-.three {
+.img-three {
   background-image: url("../images/three.jpeg");
 }
-.single {
+.img-four {
   background-image: url("../images/single.jpeg");
 }
-.couple,
-.yellow,
-.three,
-.single {
+.img-one,
+.img-two,
+.img-three,
+.img-four {
   background-position: center;
   background-size: cover;
   height: 600px;
@@ -517,10 +567,10 @@ select {
   .second-slide-container {
     padding: 40px;
   }
-  .couple,
-  .yellow,
-  .three,
-  .single {
+  .img-one,
+  .img-two,
+  .img-three,
+  .img-four {
     height: 500px;
     width: 400px;
   }
@@ -529,10 +579,10 @@ select {
   .second-slide-container {
     padding: 20px;
   }
-  .couple,
-  .yellow,
-  .three,
-  .single {
+  .img-one,
+  .img-two,
+  .img-three,
+  .img-four {
     height: 400px;
     width: 300px;
   }
@@ -541,10 +591,10 @@ select {
   .second-slide-container {
     padding: 10px;
   }
-  .couple,
-  .yellow,
-  .three,
-  .single {
+  .img-one,
+  .img-two,
+  .img-three,
+  .img-four {
     height: 400px;
     width: 250px;
   }
@@ -711,13 +761,14 @@ select {
   margin-top: 50px;
   height: 150px;
   width: 100%;
-  background-color: rgb(73, 73, 73);
+  background: linear-gradient(rgb(255, 255, 255), rgb(110, 110, 110));
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.5);
 }
+
 .visa,
 .mastercard,
 .paypal,

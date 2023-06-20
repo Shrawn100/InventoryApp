@@ -2,20 +2,17 @@ extends layout
 
 block content
   nav.navbar
-    ul.nav-links
-      li
-        a(href="/catalog/items") Products
-      li
-        a(href="/catalog/cart")
-          span.material-icons
-            | shopping_cart
-          | #{count}
     div.logo
       a(href="/") Vintage
-    div.login
-      a(href="/login")
-       span.material-icons
-            | account_circle
+    ul.nav-links
+      li
+        a.products-link(href="/catalog/items") Products
+      li
+        a(href="/catalog/cart")
+          span.material-icons.shopping-cart
+            | shopping_cart
+          if(count!==0)
+            div.cart-count #{count}
           
   if (products && products.length > 0 || products != null)
     .cart-items

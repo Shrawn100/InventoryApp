@@ -2,20 +2,19 @@ extends layout
 
 block content
   nav.navbar
-    ul.nav-links
-      li
-        a(href="/catalog/items") Products
-      li
-        a(href="/catalog/cart")
-          span.material-icons
-            | shopping_cart
-          | #{count}
     div.logo
       a(href="/") Vintage
-    div.login
-      a(href="/login")
-       span.material-icons
-            | account_circle
+    ul.nav-links
+      li
+        a.products-link(href="/catalog/items") Products
+      li
+        a(href="/catalog/cart")
+          span.material-icons.shopping-cart
+            | shopping_cart
+          if(count!==0)
+            div.cart-count #{count}
+   
+    
           
 
 
@@ -27,15 +26,16 @@ block content
       
     a(href="/catalog/items") SHOP NOW
   .second-slide-container
-    .yellow
-    .couple
-    .three
-    .single
+    .second-slide-img-container
+      .img-one
+      .img-two
+      .img-three
+      .img-four
   .third-slide-container 
     .quote 
       |"Step into the realm of urban fashion at Vintage, where style and attitude converge. Discover curated collections that elevate your streetwear game."
       br
-      |- A wise man.
+      |- Shrawn C.
   .fourth-slide-container
     .fourth-slide-container-title Shop From The World's Leading Brands
     .brands-wheel 

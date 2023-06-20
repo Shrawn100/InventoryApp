@@ -1,24 +1,28 @@
 extends layout
 block content
   nav.navbar
-    ul.nav-links
-      li
-        a(href="/catalog/items") Products
-      li
-        a(href="/catalog/cart")
-          span.material-icons
-            | shopping_cart
-          | #{count}
     div.logo
       a(href="/") Vintage
-    div.login
-      a(href="/login")
-       span.material-icons
-            | account_circle
+    ul.nav-links
+      li
+        a.products-link(href="/catalog/items") Products
+      li
+        a(href="/catalog/cart")
+          span.material-icons.shopping-cart
+            | shopping_cart
+          if(count!==0)
+            div.cart-count #{count}
           
 
   .item-detail-container
-    img.item-picture(src=item.image alt=item.title referrerpolicy="no-referrer")
+    .item-image-container
+     
+      img.item-picture(id="mainImage" src=item.image alt=item.title referrerpolicy="no-referrer")
+      if item.imagetwo || item.imagethree
+      .item-other-imgs
+        each image in [item.image, item.imagetwo, item.imagethree]
+          if image
+            img.item-list-img(src=image alt=item.title referrerpolicy="no-referrer")
     .item-info-container
       h1 #{title}
       h2 $#{item.price}
@@ -27,3 +31,17 @@ block content
         label(for="quantity") Quantity:
         input#quantity(type="number" name="quantity" min="1" value="1")
         button.add-to-cart-btn(type="submit") Add to Cart
+
+  // Include JavaScript for the carousel functionality
+  script.
+    var mainImage = document.getElementById('mainImage');
+    var thumbnails = document.querySelectorAll('.item-list-img');
+
+    thumbnails.forEach(function(thumbnail) {
+      thumbnail.addEventListener('click', function() {
+        var mainImageSrc = this.getAttribute('src');
+        mainImage.setAttribute('src', mainImageSrc);
+      });
+    });
+
+    
