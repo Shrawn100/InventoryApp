@@ -3,7 +3,8 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
+const compression = require("compression");
+const helmet = require("helmet");
 var indexRouter = require("./routes/index");
 const catalogRouter = require("./routes/catalog"); //Import routes for "catalog" area of site
 const uniqid = require("uniqid");
@@ -11,7 +12,24 @@ const session = require("express-session");
 var app = express();
 
 require("dotenv").config();
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      "script-src": ["'self'", "code.jquery.com", "cdn.jsdelivr.net"],
+    },
+  })
+);
 
+// Set up rate limiter: maximum of twenty requests per minute
+const RateLimit = require("express-rate-limit");
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 20,
+});
+// Apply rate limiter to all requests
+app.use(limiter);
+// …
+app.use(compression()); // Compress all routes
 //Set up mongoose connection
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
