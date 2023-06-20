@@ -3,15 +3,8 @@ const Category = require("../models/category");
 const asyncHandler = require("express-async-handler");
 const mongoose = require("mongoose");
 exports.index = asyncHandler(async (req, res, next) => {
-  const [numItems, numCategories] = await Promise.all([
-    Item.countDocuments({}).exec(),
-    Category.countDocuments({}).exec(),
-  ]);
   const count = req.session.cartCount || 0;
   res.render("index", {
-    title: "Site Home",
-    item_count: numItems,
-    category_count: numCategories,
     count,
   });
 });
