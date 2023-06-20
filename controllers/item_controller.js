@@ -17,7 +17,10 @@ exports.index = asyncHandler(async (req, res, next) => {
 });
 // Display list of all item.
 exports.item_list = asyncHandler(async (req, res, next) => {
-  const allItems = await Item.find().populate("category").exec();
+  const allItems = await Item.find()
+    .sort({ category: 1 })
+    .populate("category")
+    .exec();
   const count = req.session.cartCount || 0;
   res.render("item_list", { title: "Item List", item_list: allItems, count });
 });

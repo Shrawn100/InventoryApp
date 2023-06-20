@@ -146,11 +146,12 @@ select {
 }
 .item-image-container {
   display: flex;
-
+  min-width: 400px;
   flex-direction: column;
   justify-content: space-between;
   max-width: 600px;
-  min-height: 800px;
+  min-height: 750px;
+
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
 }
 

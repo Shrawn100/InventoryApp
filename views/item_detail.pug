@@ -28,9 +28,22 @@ block content
       h2 $#{item.price}
       form.qty-form(action="", method="POST")
         input(type="hidden" name="productId" value=item._id)
+        label(for="size") Size:
+        select#size(name="size")
+          if item.category.name === "Shoes"
+            option(value="7") US-7
+            option(value="8") US-8
+            option(value="9") US-9
+            option(value="10") US-10
+            option(value="11") US-11
+          else
+            option(value="small") Small
+            option(value="medium") Medium
+            option(value="large") Large
         label(for="quantity") Quantity:
         input#quantity(type="number" name="quantity" min="1" value="1")
         button.add-to-cart-btn(type="submit") Add to Cart
+
 
   // Include JavaScript for the carousel functionality
   script.
