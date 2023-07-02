@@ -11,7 +11,7 @@ block content
         a(href="/catalog/cart")
           span.material-icons.shopping-cart
             | shopping_cart
-          if(count!==0)
+          if(count>=1)
             div.cart-count #{count}
           
   if (products && products.length > 0 || products != null)
@@ -36,4 +36,4 @@ block content
   else
     .empty-cart
       
-      h2 Your cart is empty
+      h2.empty-cart-heading Your cart is empty
